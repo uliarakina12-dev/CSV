@@ -16,8 +16,16 @@ public class Main {
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         String fileName = "data.csv";
 
+        List<Employee> employees = XmlToJsonParser.parseXML("data.xml");
+
+        // Преобразуем в JSON
+        String json = XmlToJsonParser.listToJson(employees);
+
+        // Записываем в файл
+        XmlToJsonParser.writeString(json, "data2.json");
+
         List<Employee> list = parseCSV(columnMapping, fileName);
-        String json = listToJson(list);
+
         writeString(json, "data.json");
     }
 
